@@ -1,0 +1,13 @@
+---
+Name: realtime_statistics
+After:
+  - 'mysite/*'
+---
+AdapterFactory:
+  Adapter: GraphiteAdapter
+  Host: localhost
+  Port: 2003
+
+StatisticController:
+  Separator: .
+  Namespace: ntb

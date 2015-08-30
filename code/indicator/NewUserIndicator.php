@@ -16,6 +16,6 @@ class NewUserIndicator extends \Object implements IIndicator {
     }
 
     public function fetch() {
-        return \DataObject::get('Member')->count();
+        return \Member::get()->count();
     }
 }

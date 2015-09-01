@@ -8,6 +8,6 @@ AdapterFactory:
   Host: localhost
   Port: 2003
 
-StatisticController:
+StatisticTask:
   Separator: .
   Namespace: ntb

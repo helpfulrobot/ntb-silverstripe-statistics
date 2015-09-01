@@ -9,37 +9,24 @@
 namespace Ntb\Statistics;
 
 /**
- * Class IndicatorFactory
+ * Factor for the different statistic indicators.
  * @package Ntb\Statistics
  */
 class IndicatorFactory extends \Object {
     /**
+     * The indicator interface name
      * @var string
      */
-    private static $interface_name = 'Ntb\Statistic\IIndicator';
+    private static $interface_name = 'Ntb\Statistics\IIndicator';
 
     /**
+     * Returns an array of all implementors of the `IIndicator` interface.
      *
-     *
-     * @return IIndicator[]
+     * @return IIndicator[] list of all implementors
      */
     public static function get_all() {
-        $indicators = [
-            new NewUserIndicator(),
-            new UserCompleteIndicator()
-        ];
+        $indicators = \ClassInfo::implementorsOf(self::$interface_name);
 
         return $indicators;
-    }
-
-    /**
-     *
-     *
-     * @param string $className
-     * @param string $interface
-     * @return bool
-     */
-    public static function implements_interface($className, $interface) {
-        return in_array($interface, class_implements($className));
     }
 }

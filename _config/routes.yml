@@ -1,7 +1,0 @@
----
-Name: statisticroutes
-After: framework/routes#coreroutes
----
-Director:
-  rules:
-    'statistics': 'Ntb\Statistics\StatisticController'

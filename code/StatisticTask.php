@@ -21,7 +21,17 @@ class StatisticTask extends \BuildTask {
      *
      */
     public function run($request) {
-        $controller = new StatisticController();
-        $controller->index();
+        $indicators = IndicatorFactory::get_all();
+        $adapter = AdapterFactory::create();
+
+        if($adapter->canConnect()) {
+            echo "Service can be reached...", "<br>";
+            echo "Fetch indicators...", "<br>";
+            echo "Indicators:", "<br>";
+            $adapter->send($indicators);
+            echo "Statistic was updated.", "<br>";
+        } else {
+            echo "Can't connect to service.", "<br>";
+        }
     }
 }

@@ -25,8 +25,8 @@ class GraphiteStatisticAdapter extends \Object implements IStatisticAdapter {
      * @return array
      */
     protected function processIndicators($indicators) {
-        $namespace = \Config::inst()->get('StatisticController', 'Namespace');
-        $separator = \Config::inst()->get('StatisticController', 'Separator');
+        $namespace = \Config::inst()->get('StatisticTask', 'Namespace');
+        $separator = \Config::inst()->get('StatisticTask', 'Separator');
         if(!empty($namespace)) {
             $namespace .= $separator;
         } else {
@@ -70,7 +70,6 @@ class GraphiteStatisticAdapter extends \Object implements IStatisticAdapter {
         foreach ($data as $name => $value) {
             // you need to send a newline for each message
             $message = implode(" ", [$name, $value, $time]) . PHP_EOL;
-            echo " - $message<br>";
             fwrite($fp, $message);
         }
         fflush($fp);

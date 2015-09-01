@@ -15,7 +15,7 @@ interface IStatisticAdapter {
     public function canConnect();
 
     /**
-     *
+     * Sends all given indicators to the configured service.
      *
      * @param IIndicator[] $indicators
      */

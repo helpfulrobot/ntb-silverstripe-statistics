@@ -10,6 +10,25 @@ available indicators will be fetched and send with use of an adapter.
 
  * Graphite adapter
  
-## Available indicators
+## Write your indicators
 
- * new users
+To create your indicators you must implement `IIndicator` in your own classes. When the task runs, the indicators are
+fetched automatically by the code. You can run the task in the browser in `dev/tasks/Ntb-Statistics-StatisticTask`
+or by using the commandline interface.
+
+```
+use Ntb\Statistics\IIndicator;
+
+class NewUserIndicator extends Object implements IIndicator {
+    private static $name = ['user', 'new'];
+
+    public function name() {
+        $separator = \Config::inst()->get('StatisticController', 'Separator');
+        return implode($separator, self::$name);
+    }
+
+    public function fetch() {
+        return Member::get()->count();
+    }
+}
+```

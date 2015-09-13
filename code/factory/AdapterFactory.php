@@ -3,27 +3,34 @@
 namespace Ntb\Statistics;
 
 /**
- * Class AdapterFactory
+ * Adapter factory for creating statistic adapters.
+ *
  * @package Ntb\Statistics
  */
-class AdapterFactory extends \Object {
+class AdapterFactory {
+    /**
+     * The adapter interface name
+     * @var string
+     */
+    private static $interface_name = 'Ntb\Statistics\IStatisticAdapter';
 
     /**
+     *
+     *
      * @return IStatisticAdapter
+     * @throws \Exception
      */
     public static function create() {
         $host = \Config::inst()->get('AdapterFactory', 'Host');
         $port = \Config::inst()->get('AdapterFactory', 'Port');
         $type = \Config::inst()->get('AdapterFactory', 'Adapter');
+        $adapters = \ClassInfo::implementorsOf(self::$interface_name);
 
-        if($type == 'GraphiteAdapter') {
-            return self::create_graphite_adapter($host, $port);
+        if(in_array($type, $adapters)) {
+            return \Object::create($type, $host, $port);
+        } else {
+            throw new \Exception("Configured adapter '$type' not found.");
         }
     }
-    /**
-     * @return GraphiteStatisticAdapter
-     */
-    public static function create_graphite_adapter($host, $port) {
-        return new GraphiteStatisticAdapter($host, $port);
-    }
+
 }

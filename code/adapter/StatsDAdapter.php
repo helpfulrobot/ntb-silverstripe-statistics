@@ -3,11 +3,11 @@
 namespace Ntb\Statistics;
 
 /**
- * An adapter that can connect to graphite service.
+ * An adapter that can connect to statsd service.
  *
  * @package Ntb\Statistics
  */
-class GraphiteAdapter extends AbstractNetworkAdapter implements IStatisticAdapter {
+class StatsDAdapter extends AbstractNetworkAdapter implements IStatisticAdapter {
 
     /**
      * @param $data

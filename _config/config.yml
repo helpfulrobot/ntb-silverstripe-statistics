@@ -4,7 +4,7 @@ After:
   - 'mysite/*'
 ---
 AdapterFactory:
-  Adapter: GraphiteAdapter
+  Adapter: Ntb\Statistics\BlackholeAdapter
   Host: localhost
   Port: 2003
 

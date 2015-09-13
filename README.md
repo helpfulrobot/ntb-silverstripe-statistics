@@ -9,6 +9,7 @@ available indicators will be fetched and send with use of an adapter.
 ## Available adapters
 
  * Graphite adapter
+ * statsd adapter
  
 ## Write your indicators
 

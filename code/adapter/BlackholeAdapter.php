@@ -2,15 +2,16 @@
 
 namespace Ntb\Statistics;
 
-
-class BlackholeAdapter extends \Object implements IStatisticAdapter {
+class BlackholeAdapter extends \Object implements IStatisticAdapter
+{
 
     /**
      * Check the current connectivity ot the remote service.
      *
      * @return bool
      */
-    public function canConnect() {
+    public function canConnect()
+    {
         return true;
     }
 
@@ -19,7 +20,8 @@ class BlackholeAdapter extends \Object implements IStatisticAdapter {
      *
      * @param IIndicator[] $indicators
      */
-    public function send($indicators) {
+    public function send($indicators)
+    {
         print_r($indicators);
     }
 }

@@ -6,7 +6,8 @@ namespace Ntb\Statistics;
  * Interface IStatisticAdapter
  * @package Ntb\Statistics
  */
-interface IStatisticAdapter {
+interface IStatisticAdapter
+{
     /**
      * Check the current connectivity ot the remote service.
      *

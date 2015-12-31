@@ -6,7 +6,8 @@ namespace Ntb\Statistics;
  *
  * @package Ntb\Statistics
  */
-abstract class AbstractNetworkAdapter extends \Object {
+abstract class AbstractNetworkAdapter extends \Object
+{
     /**
      *
      * @var string
@@ -27,7 +28,8 @@ abstract class AbstractNetworkAdapter extends \Object {
      * @param string $host
      * @param int $port
      */
-    public function __construct($host, $port) {
+    public function __construct($host, $port)
+    {
         parent::__construct();
 
         $this->host = $host;
@@ -42,16 +44,17 @@ abstract class AbstractNetworkAdapter extends \Object {
      * @param IIndicator[] $indicators
      * @return array
      */
-    protected function processIndicators($indicators) {
+    protected function processIndicators($indicators)
+    {
         $namespace = \Config::inst()->get('StatisticTask', 'Namespace');
         $separator = \Config::inst()->get('StatisticTask', 'Separator');
-        if(!empty($namespace)) {
+        if (!empty($namespace)) {
             $namespace .= $separator;
         } else {
             $namespace = '';
         }
         $data = [];
-        foreach($indicators as $indicator) {
+        foreach ($indicators as $indicator) {
             $data[$namespace . $indicator->name()] = $indicator->fetch();
         }
 
@@ -63,7 +66,8 @@ abstract class AbstractNetworkAdapter extends \Object {
      *
      * @return int
      */
-    protected function currentTime() {
+    protected function currentTime()
+    {
         return time();
     }
 
@@ -71,7 +75,8 @@ abstract class AbstractNetworkAdapter extends \Object {
      *
      * @return resource
      */
-    protected function createSocket() {
+    protected function createSocket()
+    {
         $fp = @fsockopen("tcp://{$this->host}", $this->port, $errorNo, $errorMsg, 1);
         return $fp;
     }
@@ -79,14 +84,16 @@ abstract class AbstractNetworkAdapter extends \Object {
     /**
      * @return bool
      */
-    public function canConnect() {
+    public function canConnect()
+    {
         return is_resource($this->socket);
     }
 
     /**
      * @param $indicators
      */
-    public function send($indicators) {
+    public function send($indicators)
+    {
         $data = $this->processIndicators($indicators);
         $time = $this->currentTime();
         // send data over the wire to specified address
@@ -98,13 +105,15 @@ abstract class AbstractNetworkAdapter extends \Object {
      * @param $time
      * @return mixed
      */
-    protected abstract function sendToService($data, $time);
+    abstract protected function sendToService($data, $time);
 
-    public function getHost() {
+    public function getHost()
+    {
         return $this->host;
     }
 
-    public function getPort() {
+    public function getPort()
+    {
         return $this->port;
     }
 }

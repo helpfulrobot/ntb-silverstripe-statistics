@@ -2,13 +2,15 @@
 
 use Ntb\Statistics\IIndicator;
 
-class IndicatorFactoryTest extends SapphireTest {
+class IndicatorFactoryTest extends SapphireTest
+{
 
-    public function testIndicatorCreation() {
+    public function testIndicatorCreation()
+    {
         $indicators = \Ntb\Statistics\IndicatorFactory::get_all();
 
         $this->assertTrue(count($indicators) >= 1);
-        $filtered = array_filter($indicators, function($indicator) {
+        $filtered = array_filter($indicators, function ($indicator) {
             return $indicator instanceof TestIndicator;
         });
 
@@ -18,13 +20,16 @@ class IndicatorFactoryTest extends SapphireTest {
     }
 }
 
-class TestIndicator implements IIndicator, TestOnly {
+class TestIndicator implements IIndicator, TestOnly
+{
 
-    public function fetch() {
+    public function fetch()
+    {
         return 1;
     }
 
-    public function name() {
+    public function name()
+    {
         return "test.t";
     }
 }

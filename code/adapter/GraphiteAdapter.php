@@ -7,14 +7,16 @@ namespace Ntb\Statistics;
  *
  * @package Ntb\Statistics
  */
-class GraphiteAdapter extends AbstractNetworkAdapter implements IStatisticAdapter {
+class GraphiteAdapter extends AbstractNetworkAdapter implements IStatisticAdapter
+{
 
     /**
      * @param $data
      * @param $time
      * @return mixed|void
      */
-    protected function sendToService($data, $time) {
+    protected function sendToService($data, $time)
+    {
         $fp = $this->socket;
 
         foreach ($data as $name => $value) {

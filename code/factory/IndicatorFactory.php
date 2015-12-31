@@ -12,7 +12,8 @@ namespace Ntb\Statistics;
  * Factor for the different statistic indicators.
  * @package Ntb\Statistics
  */
-class IndicatorFactory {
+class IndicatorFactory
+{
     /**
      * The indicator interface name
      * @var string
@@ -24,10 +25,11 @@ class IndicatorFactory {
      *
      * @return IIndicator[] list of all implementors
      */
-    public static function get_all() {
+    public static function get_all()
+    {
         $indicators = \ClassInfo::implementorsOf(self::$interface_name);
 
-        return array_map(function($indicatorName) {
+        return array_map(function ($indicatorName) {
             return \Object::create($indicatorName);
         }, $indicators);
     }

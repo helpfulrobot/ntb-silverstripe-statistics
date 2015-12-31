@@ -7,7 +7,8 @@ namespace Ntb\Statistics;
  *
  * @package Ntb\Statistics
  */
-class AdapterFactory {
+class AdapterFactory
+{
     /**
      * The adapter interface name
      * @var string
@@ -20,17 +21,17 @@ class AdapterFactory {
      * @return IStatisticAdapter
      * @throws \Exception
      */
-    public static function create() {
+    public static function create()
+    {
         $host = \Config::inst()->get('AdapterFactory', 'Host');
         $port = \Config::inst()->get('AdapterFactory', 'Port');
         $type = \Config::inst()->get('AdapterFactory', 'Adapter');
         $adapters = \ClassInfo::implementorsOf(self::$interface_name);
 
-        if(in_array($type, $adapters)) {
+        if (in_array($type, $adapters)) {
             return \Object::create($type, $host, $port);
         } else {
             throw new \Exception("Configured adapter '$type' not found.");
         }
     }
-
 }

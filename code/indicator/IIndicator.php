@@ -8,7 +8,8 @@ namespace Ntb\Statistics;
  *
  * @package Ntb\Statistics
  */
-interface IIndicator {
+interface IIndicator
+{
 
     /**
      *

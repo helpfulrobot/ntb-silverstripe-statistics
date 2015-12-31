@@ -8,8 +8,8 @@
 
 namespace Ntb\Statistics;
 
-
-class StatisticTask extends \BuildTask {
+class StatisticTask extends \BuildTask
+{
 
     protected $title = 'Realtime Statistics Task';
 
@@ -20,11 +20,12 @@ class StatisticTask extends \BuildTask {
     /**
      *
      */
-    public function run($request) {
+    public function run($request)
+    {
         $indicators = IndicatorFactory::get_all();
         $adapter = AdapterFactory::create();
 
-        if($adapter->canConnect()) {
+        if ($adapter->canConnect()) {
             echo "Service can be reached...", "<br>";
             echo "Fetch indicators...", "<br>";
             echo "Indicators:", "<br>";
